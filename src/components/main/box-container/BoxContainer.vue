@@ -32,9 +32,18 @@ export default {
         } else {
           if (!this.store.boxNoBomb.includes(number)) {
             this.store.boxNoBomb.push(number);
+            this.getWinnerBan();
           }
           return "blue";
         }
+      }
+    },
+    getWinnerBan() {
+      if (
+        this.store.boxNoBomb.length ===
+        Number(this.store.difficulties) - this.store.boxBombs.length
+      ) {
+        this.store.gameOverWin = true;
       }
     },
     getHelper(number) {
